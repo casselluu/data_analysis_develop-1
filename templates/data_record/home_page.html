@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Home of data record!</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    {% for path_n in path_all %}
+        
+        <li>{{forloop.counter}}:{{path_n}}</li>
+    {%endfor%}
+</body>
+</html>

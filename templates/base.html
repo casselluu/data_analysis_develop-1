@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	{% block title%}
+	<title>首页</title>
+	{% endblock%}
+	<style type="text/css">
+	
+	 	div{margin-left:10%;width:75%;height:auto;background:silver;}
+		a{width:50px;}
+		.welcome{margin-left:35%;font-size:40px;}
+                table{
+        	border: 2px solid black;
+        	color:black;
+        	margin:1em 2em;
+        	border-collapse:collapse;
+       		border-spacing:3px 5px;
+        	padding:1em;
+        	table-layout:fixed;
+        	width:1600px;
+        	text-align:center;
+        	}
+        	.CDR {width:800px}
+        	.cdr1 {color:green}
+        	.cdr2 {color:blue}
+        	.cdr3 {color:grey}
+        	.cdr4 {color:pink}
+        	.cdr5 {color:silver}
+        	.cdr6 {color:red}              
+
+	</style>
+	
+</head>
+<body>
+<div style="font-size:30px;line-height:100px;">
+	<a href="/admin">后台管理</a>&nbsp&nbsp&nbsp&nbsp
+	<a href="{% url 'data_record:cdrinfo' 1 "lengthCdr3" %}">CDR显示</a>&nbsp&nbsp&nbsp&nbsp
+        {% if del_his %}
+		<a href="{% url 'data_record:delhistory'%}">删除结果</a>&nbsp&nbsp&nbsp&nbsp
+	{% endif %}
+	<a href="{% url 'data_record:upload' %}">序列分析</a>&nbsp&nbsp&nbsp&nbsp
+	<a href="{% url 'data_record:download'%}">结果下载</a>&nbsp&nbsp&nbsp&nbsp
+	<a href="{% url 'data_record:chagepasswd'%}">修改密码</a>&nbsp&nbsp&nbsp&nbsp
+	<a href="{% url 'data_record:logout'%}">退出登陆</a>
+</div>
+{% block body %}
+<p class="welcome">欢迎使用舒泰神数据分析系统!</p>
+{% endblock %}
+</body>
+</html>

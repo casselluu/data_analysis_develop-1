@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+    {% if error %}
+    <p>{{error}}</p>
+    {% endif %}
+    <form action="/data_record/check_passwd/" method="post">
+        {% csrf_token %}
+    <p>your name<input type="text" name ="name"></p>
+    <p>your passwd <input type="password" name="passwd"></p>
+    <input type="submit" value="提交">
+    </form>
+</body>
+</html>
+

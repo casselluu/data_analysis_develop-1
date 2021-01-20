@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+
+<ul>
+{% for data_n in all_data %}
+<li>
+    <a href="data_record/download/{{data_n.id}}">{{data_n.folder_name}}</a>
+    <div>
+    <span>分析人:{{data_n.person_analysis}}</span>
+    <span>相关项目:{{data_n.project_name}}</span>
+    </div>
+
+</li>
+</ul>
+</html>

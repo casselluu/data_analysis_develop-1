@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+
+<ul>
+{% for data_n in all_data %}
+<li>
+	<form action="/data_record/download/"  method="post">
+		{% csrf_token %}
+		<input type=hidden name=idN value={{data_n.id}}>
+		<input type="submit" value="下载">
+	</form>
+    <div>{{data_n.folder}}<div>
+    <div>
+    <span>分析人:{{data_n.person}}</span>
+    <span>相关项目:{{data_n.serialnum}}</span>
+    <p>分析时间:{{data_n.pubDate}}</p>
+    </div>
+{% endfor %}
+</li>
+</ul>
+</html>

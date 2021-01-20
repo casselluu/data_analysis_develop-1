@@ -1,0 +1,9 @@
+{% if info_dict_items %}
+    <ul>
+    {% for value in info_dict_items %}
+    <li>{{value}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> No information available</p>
+{% endif %}

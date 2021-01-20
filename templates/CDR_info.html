@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load mytags %}
+        {%block title%}
+	<title>CDR信息显示</title>
+        {%endblock%}
+
+{%block body %}
+	<!--定义排序的类别，分别为按照CDR3长度排序，CDR排序，分析时间排序-->
+	<form action="{% url 'data_record:cdrinfo' 1 order_type %}" method="POST">
+		{% csrf_token %}
+		
+		{{rangeForm.as_p}}
+		
+		<input type="submit" value="提交">
+	</form>
+        <ul>当前按照{{order_type}}排序</ul>
+	<table border=1>
+		<tr>
+			<th>序列名称</th>
+			<th class="CDR">序列信息</th>
+			<th>序列长度</th>
+			<th>CDR3长度</th>
+			<th>分析时间</th>
+		</tr>
+		{% for list in pageinfo.object_list %}
+		<tr>
+			<td>{{list.seqName}}</td>
+			<td>{% cdrsplit list.sequence %}</td>
+			<td>{{list.lengthAllCdr}}</td>
+			<td>{{list.lengthCdr3}}</td>
+			<td>{{list.history.pubDate}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+<!--下面定义显示下一页的链接的模块-->
+
+<div>
+	{% if pageinfo.has_previous %}
+	    <a href="{% url 'data_record:cdrinfo' pageinfo.previous_page_number order_type %}">上一页</a>
+	{% endif %}
+	{% if pageinfo.object_list %}
+		{% for page in pageinfo.paginator.page_range %}
+			{% if pageinfo.number == page %}
+				<a href="javascript:;">{{page}}</a>
+			{% else %}
+				<a href="{% url 'data_record:cdrinfo' page  order_type%}">{{page}}</a>
+			{% endif%}
+		{% endfor %}
+	{% endif %}
+	{% if pageinfo.has_next %}
+	 <a href="{% url 'data_record:cdrinfo' pageinfo.next_page_number order_type%}">下一页</a>
+	{% endif %}
+</div>
+
+{%endblock%}
+

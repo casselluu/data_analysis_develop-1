@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+<title>修改密码</title>
+{% endblock %}
+
+{% block body %}
+    <form action="/data_record/chagepasswd/" method="post">
+        {% csrf_token %}
+        用户名:{{username}}<br>
+        原密码:<input type="password" name="origin_passwd">{{error_info}}<br>
+        新密码:<input type="password" name="new_passwd"><br>
+	<input type="submit" value="提交"><br>
+    </form>
+{% endblock %}

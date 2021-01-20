@@ -1,0 +1,9 @@
+{% if latest_analysis_list %}
+    <ul>
+    {% for history in latest_analysis_list %}
+        <li><a href="{% url 'data_record:detail'  history.id %}">{{ history.project_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

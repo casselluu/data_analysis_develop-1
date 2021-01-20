@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+<head>
+    <title>choose function</title>
+<head>
+<body>
+<form action="/data_record/check/" method="get" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="submit" value="check_data">
+</form>
+
+<form action="/data_record/download/" method="get" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="submit" value="download">
+</form>
+
+<form action="/data_record/upload/" method="get" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="submit" value="data_analysis">
+</form>
+
+</body>
+</html>
+

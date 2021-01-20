@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+<title>upload a file</title>
+{% endblock %}
+
+{% block body %}
+<form action="/data_record/upload/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <br><input type="file" name = "myfile"></br>
+    <br>项目名称：
+	<select name="serial_name">
+		{% for serial_n in serialnum_all %}
+		<option value={{serial_n.name}}>{{serial_n.name}}</option>
+		{% endfor %}
+	</select>
+    </br>
+    <br>
+    scfv字符(可不填):<input type = "text" name ="scfv_char">
+    Fab_H字符(可不填):<input type = "text" name = "fab_h" >
+    Fab_L字符(可不填):<input type = "text" name = "fab_l">
+    </br>
+    <br>
+    <input type="submit" value="保存">
+    </br>
+    </form>
+<br>
+<li>目前支持以下常用字符(不分大小写) Fab(VL+VH)</li>
+
+<li>Fab:T7+T2A</li>
+<li>Fab:Pfab+T2A</li>
+<li>Fab:YD+CH1</li>
+<li>Fab:P2a_R+P2a+F</li>
+<li>Fab:3X_F+3X_R</li>
+<li>ScFv:ScFv</li>
+</br>
+
+{% endblock %}
+<br>注意：假如是一个新的对比分析的项目号，需要负责人先添加项目号，才可以选择</br>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+<title>delte histories</title>
+{% endblock %}
+
+{% block body%}
+{% for his_n in all_history %}
+<form action="/data_record/del_his" method="post">
+	{% csrf_token %}
+	<ul>分析序列编号:{{his_n.serialnum}}</ul>
+	<ul>分析日期:{{his_n.pubDate}}</ul>
+	<ul>分析文件名:{{his_n.folder}}</ul>
+	<input type="hidden" name="ID" value={{hist_n.id}}>
+	<input type="submit" value="删除">
+	</br></br></br>
+{% endfor %}
+{% endblock %}
+
