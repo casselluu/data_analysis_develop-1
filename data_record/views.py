@@ -8,7 +8,7 @@ from .models import History,Project,Unique,SerialNum
 import os,re
 from django.contrib.auth import authenticate,logout
 from django.contrib.auth.decorators import login_required
-from multi_tools.hmmer_parser import *
+#from multi_tools.hmmer_parser import *
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 #from django.contrib.auth.models import User
 from .models import MyUser
@@ -384,12 +384,16 @@ def upload(request):
             if seq_num==0:
                 return HttpResponse("上传的zip文件不含有seq文件")
             #print("sssssssssssccccccccccccffffffffffffvvvvvvvv2222222222222",scfv_char)
+            #这里暂时不进行序列的分析
             if not (scfv_char.strip("\r\n") )and not (fab_h.strip()) and not (fab_l.strip()):
-                os.system("multi_tools FGS .")
+                #os.system("multi_tools FGS .")
+                pass
             elif (scfv_char.strip("\r\n") )and not (fab_h.strip()) and not (fab_l.strip()):
-                os.system("multi_tools FGS . --scfv %s" %scfv_char)
+                #os.system("multi_tools FGS . --scfv %s" %scfv_char)
+                pass
             elif (scfv_char.strip("\r\n")) and (fab_h.strip()) and  (fab_l.strip()):
-                os.system("multi_tools FGS . --scfv %s -d  %s %s"%(scfv_char,fab_l.strip(),fab_h.strip()))
+                #os.system("multi_tools FGS . --scfv %s -d  %s %s"%(scfv_char,fab_l.strip(),fab_h.strip()))
+                pass
             #os.chdir(os.path.join(target_dir,myFile.name.strip(".zip")))
             os.chdir(target_dir)
             ##检查分析完的序列和原始的序列数量是否对应
@@ -400,71 +404,71 @@ def upload(request):
                 fab_chars=[("T7","T2A"),("PFAB","T2A"),("YD","CH1"),("p2a-R","p2a-F"),("3X-F","3X-R"),("SeqSE","SeqSR"),("SeqSE","RB-R84")]
             else:
                 fab_chars=[(fab_l,fab_h)]
-            check_num(seq_path,scfv_char,fab_chars)          
+            #check_num(seq_path,scfv_char,fab_chars)
             ##定义分析结果所在的路径
-            target_result_path=os.path.join(target_dir,"result",myFile.name.split(".zip")[0])  
+            target_result_path=os.path.join(target_dir,"result",myFile.name.split(".zip")[0])
             #接下来进行查找新序列的操作
             ##首先获取当前分析的结果所在的文件夹
             ##从history的model中获取该项目的分析历史路径
             ##运行命令查找新的序列
             #print("ppppppppppppppppppppppp",path_olds)
-            if path_olds:
-                get_new_excel(path_olds,target_result_path,True)
-            else:
-                os.chdir(target_result_path)
-                os.system("combined_seq_cdr_FGS")
+            #if path_olds:
+            #    get_new_excel(path_olds,target_result_path,True)
+            #else:
+            #    os.chdir(target_result_path)
+            #    os.system("combined_seq_cdr_FGS")
             #判断是否需要进行是否构建的状态分析
             #print("cccccccccccccccccccccccccccccccc",check_list)
-            if check_list:
-                os.chdir(target_result_path)
-                if not path_olds:
-                    
-                    os.system("touch empty_file")
-                    os.system("get_new_cdr_dna_info -o empty_file")
-                    print("ssssssssssttttttttttttaaaaaaaaaaaarrrrrrrrrrttttttttttttgermline")
-                    os.system("get_germline_info_excel.py")	
-                else:
-                    print("ooooooooorrrrrrrrrrriiiiiiiiiggggggggggiiiiiiiiiinnnnn")
-                    get_all_construct_cdr(target_result_path,path_olds)
-                    os.chdir(target_result_path)
-                    os.system("get_new_cdr_dna_info -o origin_cdr")
-                    print("sssssssssstttttttttttttttaaaaaaaaaaaaaarrrrrrrrrtttttggggggggggermline")
-                    os.system("get_germline_info_excel.py")	
+            #if check_list:
+            #    os.chdir(target_result_path)
+            #    if not path_olds:
+            #
+            #        os.system("touch empty_file")
+            #        os.system("get_new_cdr_dna_info -o empty_file")
+            #        print("ssssssssssttttttttttttaaaaaaaaaaaarrrrrrrrrrttttttttttttgermline")
+            #        os.system("get_germline_info_excel.py")
+            #    else:
+            #        print("ooooooooorrrrrrrrrrriiiiiiiiiggggggggggiiiiiiiiiinnnnn")
+            #        get_all_construct_cdr(target_result_path,path_olds)
+            #        os.chdir(target_result_path)
+            #        os.system("get_new_cdr_dna_info -o origin_cdr")
+            #        print("sssssssssstttttttttttttttaaaaaaaaaaaaaarrrrrrrrrtttttggggggggggermline")
+            #        os.system("get_germline_info_excel.py")
                
             #将所有的结果进行压缩
-            os.chdir(os.path.join(target_dir,"result"))
-            os.system("tar -czvf %s_result.tar.gz %s"%(myFile.name.split(".zip")[0],myFile.name.split(".zip")[0]))
+            #os.chdir(os.path.join(target_dir,"result"))
+            #os.system("tar -czvf %s_result.tar.gz %s"%(myFile.name.split(".zip")[0],myFile.name.split(".zip")[0]))
             
             #os.system("compress_result .")
             
             #数据分析完之后将数据储存在数据库中
-            his_obj=History.objects
-            serial_obj=SerialNum.objects
+            #his_obj=History.objects
+            #serial_obj=SerialNum.objects
             #外键的话需要是该数据的实例
-            serial_n=serial_obj.get(name=serial_name)
+            #serial_n=serial_obj.get(name=serial_name)
             #print("zzzzzzzzzzzzzzzzzzz",dir(project_name))
             #分析新的序列
            
-            his_obj.create(folder=myFile.name,path=target_result_path,serialnum=serial_n,pubDate=datetime.datetime.today(),person=person_analysis)
+            #his_obj.create(folder=myFile.name,path=target_result_path,serialnum=serial_n,pubDate=datetime.datetime.today(),person=person_analysis)
             #将新序列储存在数据库中
-            os.chdir(target_result_path)
-            other_freq_file=myFile.name.split(".zip")[0]+"_CDR_info_unique.txt"
-            first_freq_file=myFile.name.split(".zip")[0]+"_CDR_info.txt"
-            unique_obj=Unique.objects
-            if os.path.exists(other_freq_file):
-                unique_file=other_freq_file
-            elif os.path.exists(first_freq_file):
-                unique_file=first_freq_file
-            else:
-                return HttpResponse("analysis not success")
-            with open(unique_file,"r") as content:
-                all_lines=content.readlines()[1:-1]
-                #total_number=all_lines[-1].strip("\r\n")
-                if len(all_lines)>0:
-                    for line_n in all_lines:
-                        id_n,folder_n,aa_n,dna_n,repeats=line_n.strip("\r\n").split("\t")
-                        #将每一个序列都存入进去,CDR长度减5是因为中间有五个空格需要减去
-                        unique_obj.create(seqName=id_n,sequence=aa_n,lengthAllCdr=len(aa_n)-5,lengthCdr3=len(aa_n.split(" ")[-1]),history=his_obj.get(path=target_result_path))
+            #os.chdir(target_result_path)
+            #other_freq_file=myFile.name.split(".zip")[0]+"_CDR_info_unique.txt"
+            #first_freq_file=myFile.name.split(".zip")[0]+"_CDR_info.txt"
+            #unique_obj=Unique.objects
+            #if os.path.exists(other_freq_file):
+            #    unique_file=other_freq_file
+            #elif os.path.exists(first_freq_file):
+            #    unique_file=first_freq_file
+            #else:
+            #    return HttpResponse("analysis not success")
+            #with open(unique_file,"r") as content:
+            #    all_lines=content.readlines()[1:-1]
+            #    #total_number=all_lines[-1].strip("\r\n")
+            #    if len(all_lines)>0:
+            #        for line_n in all_lines:
+            #            id_n,folder_n,aa_n,dna_n,repeats=line_n.strip("\r\n").split("\t")
+            #            #将每一个序列都存入进去,CDR长度减5是因为中间有五个空格需要减去
+            #            unique_obj.create(seqName=id_n,sequence=aa_n,lengthAllCdr=len(aa_n)-5,lengthCdr3=len(aa_n.split(" ")[-1]),history=his_obj.get(path=target_result_path))
            
                 
                     
