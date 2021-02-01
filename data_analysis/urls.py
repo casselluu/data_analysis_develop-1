@@ -14,20 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include,path,re_path
-from django.contrib.auth import login,logout
+from django.urls import include, path, re_path
+from django.contrib.auth import login, logout
 from .custom_site import custom_site
 from django.views.static import serve
 from django.conf import settings
+
+
 urlpatterns = [
-	path("",include("logInOut.urls")),
-    path('admin/',custom_site.urls),
-    path('data_record/',include(("data_record.urls","data_record"),namespace="data_record")),
-    path('contact/',include("contact.urls")),
+    path("", include("logInOut.urls")),
+    path('admin/', custom_site.urls),
+    path('data_record/', include(("data_record.urls", "data_record"), namespace="data_record")),
+    path('contact/', include("contact.urls")),
     path('super_admin/', admin.site.urls),
-    path('accounts/login/',login),
-    path('accounts/logout/',logout),
-    re_path("static/(?P<path>.*)",serve,{"document_root":settings.STATIC_ROOT},name="static"),
-    re_path("media/(?P<path>.*)",serve,{"document_root":settings.MEDIA_ROOT},name="media")
+    path('accounts/login/', login),
+    path('accounts/logout/', logout),
+    re_path("static/(?P<path>.*)", serve, {"document_root": settings.STATIC_ROOT}, name="static"),
+    re_path("media/(?P<path>.*)", serve, {"document_root": settings.MEDIA_ROOT}, name="media")
 
 ]
