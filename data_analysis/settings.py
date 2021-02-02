@@ -29,13 +29,13 @@ ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
-#data_record.apps.DataRecordConfig
+# data_record.apps.DataRecordConfig
 INSTALLED_APPS = [
-    'data_record',#这里的app与模板的搜索路径相关。
+    'data_record',  # 这里的app与模板的搜索路径相关。
     'data_analysis',
-    'mydefined',#这里定义自己的标签
-    'logInOut',#这里的app与网页的登陆和注销有关
-    #'account',#这里重新定义用户,由于用户和serialnum之间需要建立联系，而单独的account app无法建立联系，这里将MyUser转移到data_record的model中
+    'mydefined',  # 这里定义自己的标签
+    'logInOut',  # 这里的app与网页的登陆和注销有关
+    # 'account',#这里重新定义用户,由于用户和serialnum之间需要建立联系，而单独的account app无法建立联系，这里将MyUser转移到data_record的model中
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'data_analysis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"templates")],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,8 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#将用户的类重新定义（不使用模型默认的类）
-AUTH_USER_MODEL="data_record.MyUser"
+# 将用户的类重新定义（不使用模型默认的类）
+AUTH_USER_MODEL = "data_record.MyUser"
 
 
 # Internationalization
@@ -126,11 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-#设置静态文件的保存目录
-STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
+# 设置静态文件的保存目录
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-STATIC_ROOT=os.path.join(BASE_DIR,"static1")
-
-
-
-
+STATIC_ROOT = os.path.join(BASE_DIR, "static1")

@@ -7,12 +7,15 @@ from data_record.form import ContactForms, RangeForm
 from .models import History, Project, Unique, SerialNum
 import os
 import re
+import pandas as pd
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
-#from multi_tools.hmmer_parser import *
+# from multi_tools.hmmer_parser import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-#from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from .models import MyUser
+
+
 # 定义一个登陆的界面
 
 
@@ -26,11 +29,15 @@ def log_in(request):
 def logoutRequest(request):
     logout(request)
     return HttpResponseRedirect("/")
+
+
 # 定义一个function，该function的功能是指定数据分析的界面
 
 
 def data_analysis(request):
-    render(request, "data_record/data_analysis.html",)
+    render(request, "data_record/data_analysis.html", )
+
+
 # 展示历史数据
 
 
@@ -43,6 +50,7 @@ def display(request):
     return render(request,
                   "data_record/show_record.html",
                   {"display_data": char_list})
+
 
 # 定义登陆之后的索引界面
 
@@ -65,7 +73,7 @@ def del_his(request):
     user = request.user
     if request.method == "post":
         # 获取到需要删除的history的ID
-        id_to_rm = reuqest.POST.get("ID")
+        id_to_rm = request.POST.get("ID")
         print("iiiiiiiiiiiiiiiiiii", id_to_rm)
         if History.objects.get(id=id_to_rm):
             History.objects.get(id_to_rm).delete()
@@ -129,6 +137,7 @@ def contact(request):
         form = ContactForms(initial={"subject": "I love your site!"})
     return render(request, "data_record/contact_form.html", {"form": form})
 
+
 # 定义一个下载数据的view
 
 
@@ -172,6 +181,31 @@ def download_data(request):
                       {"all_data": all_history})
 
 
+# 读取分析结果
+def Creat_analysis_result(path):
+    info_dict = {'name': '文件名字', 'time': '文件提交时间', 'seqn': '接受序列数量', 'rseq': 3, 'wseq': '错误序列数', 'rate': '正确率',
+                 'dmn': '设计突变位点数', 'mn': '正确突变位点数', 'umn': '未突变位点数'}
+    # 更新字典
+
+    data1 = pd.read_csv(
+        'C:/Users/Casselluu/Desktop/code/python_project/data_analysis_develop-1/result/CDD_Test_all_seq_freq_info.txt',
+        sep='\t',
+        names=[])
+    return info_dict
+
+
+@login_required
+# 读取分析结果
+def AnalysisResult(request):
+    info_dict = Creat_analysis_result('C:/Users/Casselluu/Desktop/code/python_project/data_analysis_develop-1/result/')
+    page = "data_record/AnalysisResult.html"
+    username = request.user.username
+    table1 = [(46, 1), (45, 2), (44, 3)]
+    table2 = []
+    table3 = []
+    return render(request, page, {'result': info_dict, 'list1': table1, 'list2': table2,'list3': table3})
+
+
 def time_add(request, num_n):
     # num_n=100
     time_now = datetime.datetime.now()
@@ -183,9 +217,9 @@ def time_add(request, num_n):
         time_add = time_now + datetime.timedelta(hours=int_num)
         html = '<html><body> this is time %s </body></html>' % time_add
         return HttpResponse(html)
+
+
 # 新建一个小程序用来新建文件夹，假如这个文件夹已经存在那么就添加new字符然后重新创建
-
-
 class new_path:
     def __init__(self, path_n, char_n):
         self.path = path_n
@@ -209,9 +243,9 @@ def mk_new_dir(path_n, char_n):
         if not status_n:
             os.mkdir(path_x)
             return path_x
+
+
 # 定义该function用来记录异常序列的数量
-
-
 def record_abnormal(
         path_n,
         abnormal_file,
@@ -244,9 +278,9 @@ def record_abnormal(
                     if (scfv_files + common_files).count(name_n) > 0:
                         abnormal_file_num += 2
                     # for scfv_n in scfv_files+common_files:
-                        # if scfv_n.find(name_n)!=-1:
-                        #    abnormal_file_num+=2
-                        #    print("222222222222222222222222222222",scfv_n)
+                    # if scfv_n.find(name_n)!=-1:
+                    #    abnormal_file_num+=2
+                    #    print("222222222222222222222222222222",scfv_n)
 
                     if unique_files.count(name_n) > 0:
                         abnormal_file_num += 1
@@ -271,9 +305,8 @@ def get_fasta_num(path_n, fasta_n):
                 # print(path_n,fasta_n)
     return seq_count
 
+
 # 定义该function是用来对原始数据文件夹中的seq进行计数,scfv_char指的是标志SCFV的字符，fab_char表示轻链和重链的标志字符，是一个列表，列表的内容是元组，元组有两个字符串，第一个字符是vl的标志字符，第二个字符为vh的标志字符
-
-
 def count_seq(path_n, scfv_char, fab_chars):
     os.chdir(path_n)
     seq_num = 0
@@ -446,13 +479,13 @@ def upload(request):
                     scfv_char.strip("\r\n")) and not (
                     fab_h.strip()) and not (
                     fab_l.strip()):
-                #os.system("multi_tools FGS .")
+                # os.system("multi_tools FGS .")
                 pass
             elif (scfv_char.strip("\r\n")) and not (fab_h.strip()) and not (fab_l.strip()):
-                #os.system("multi_tools FGS . --scfv %s" %scfv_char)
+                # os.system("multi_tools FGS . --scfv %s" %scfv_char)
                 pass
             elif (scfv_char.strip("\r\n")) and (fab_h.strip()) and (fab_l.strip()):
-                #os.system("multi_tools FGS . --scfv %s -d  %s %s"%(scfv_char,fab_l.strip(),fab_h.strip()))
+                # os.system("multi_tools FGS . --scfv %s -d  %s %s"%(scfv_char,fab_l.strip(),fab_h.strip()))
                 pass
             # os.chdir(os.path.join(target_dir,myFile.name.strip(".zip")))
             os.chdir(target_dir)
@@ -499,9 +532,9 @@ def upload(request):
 
             # 将所有的结果进行压缩
             # os.chdir(os.path.join(target_dir,"result"))
-            #os.system("tar -czvf %s_result.tar.gz %s"%(myFile.name.split(".zip")[0],myFile.name.split(".zip")[0]))
+            # os.system("tar -czvf %s_result.tar.gz %s"%(myFile.name.split(".zip")[0],myFile.name.split(".zip")[0]))
 
-            #os.system("compress_result .")
+            # os.system("compress_result .")
 
             # 数据分析完之后将数据储存在数据库中
             # his_obj=History.objects
@@ -560,7 +593,7 @@ def upload(request):
 def search_form(request):
     if request.GET:
         if "q" in request.GET and request.GET["q"]:
-            #message="ok,%s is found"%request.GET["q"]
+            # message="ok,%s is found"%request.GET["q"]
             try:
                 project = Project.objects.filter(project_name=request.GET["q"])
                 message = project.project_name
@@ -578,7 +611,7 @@ def search_form(request):
 
 def search(request):
     if "q" in request.GET and request.GET["q"]:
-        #message="ok,%s is found"%request.GET["q"]
+        # message="ok,%s is found"%request.GET["q"]
         try:
             project = Project.objects.filter(project_name=request.GET["q"])
             message = project.project_name
@@ -595,6 +628,8 @@ def search(request):
 def detail(request, History_id):
     analysis = get_object_or_404(History, pk=History_id)
     return render(request, "data_record/detail.html", {"History": analysis})
+
+
 # def detail(request,History_id):
 #    return HttpResponse("hello you are checking detail of %s"%History_id)
 
@@ -604,7 +639,7 @@ def detail(request, History_id):
 #    except History.DoesNotExist:
 #        raise Http404("There is no id called %d"%History_id)
 #    return render(request,"data_record/detail.html",{"History":analysis})
-    # return HttpResponse("hello you are checking detail of %s"%History_id)
+# return HttpResponse("hello you are checking detail of %s"%History_id)
 
 
 def result(request, History_id):

@@ -8,6 +8,7 @@ urlpatterns = [
     path("del_his", views.del_his, name="delhistory"),
     # path('download/',views.download_data,name="show_all_data"),
     path('download/', views.download_data, name="download"),
+    path('AnalysisResult/', views.AnalysisResult, name='AnalysisResult'),
     path("logout/", views.logoutRequest, name="logout"),
     path('log_in/', views.log_in, name="log_in"),
     path(

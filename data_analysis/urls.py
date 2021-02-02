@@ -32,4 +32,5 @@ urlpatterns = [
     re_path("static/(?P<path>.*)", serve, {"document_root": settings.STATIC_ROOT}, name="static"),
     re_path("media/(?P<path>.*)", serve, {"document_root": settings.MEDIA_ROOT}, name="media")
 
+
 ]

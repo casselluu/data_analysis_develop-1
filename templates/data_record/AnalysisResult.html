@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AnalysisResult</title>
+    <style type="text/css" media="screen">
+        h1 {text-align: center}
+        h2 {text-align: center}
+        h3 {text-align: left}
+        body  { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px;}
+        qd {text-align:center}
+        th {text-align:center}
+        p.bk{color: black; font-weight: bold}
+        p.bl{color: #00a7ff}
+    </style>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <h2 style="font-family: Microsoft YaHei"><strong>{{result.name}} 亲和力成熟Phage库质量分析报告</strong></h2>
+    <p class="bk" align="center">(优化设计部  {{ result.time }})</p>
+    <p><strong>{{ result.time }}</strong> 接受序列 <strong>{{ result.name }}</strong> 亲和力成熟序列 <strong>{{ result.seqn }} </strong>条</p>
+    <p class='attribute'><strong>1. 序列正确率及多样性分析：</strong></p>
+    <p class="bk">库名称： {{ result.name }}</p>
+    <p>接受序列 {{ result.seqn }} 条</p>
+    <p class="bl">完整抗体序列{{ result.rseq }} 条</p>
+    <p class="bl">错误序列 {{ result.wseq }} 条</p>
+    <p>完整序列正确率为：<span style="color: red"> {{ result.rate }} </span></p>
+</head>
+<body>
+    <p>全序列多样性分析如下表</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover" >
+    <colgroup>
+        <col align='left' />
+        <col align='right' />
+        <col align='right' />
+        <col align='right' />
+    </colgroup>
+    <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+        <th width="25%">ID</th>
+        <th width="25%">数量</th>
+    </tr>
+
+    {% for i,j in list1 %}
+    <tr>
+        <td >{{ i }}</td>
+        <td>{{ j }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<!-- 执行模块 -->
+    <p ><strong>2. CDR区频次分析</strong></p>
+    <p class="bk">库名称： {{ result.name }}</p>
+    <p>{{ result.name }}设计CDR区突变位点共{{ result.dmn }}个，通过{{ result.rseq }} 条全正确序列的CDR区频次分析，
+        <span style="color: #0e6dad" >{{ result.mn}} 个位点发生突变, {{ result.umn }}个位点没有发生突变</span>
+        ，具体突变效率如下表（<span style="color: red">未突变位点红色标粗</span>）
+    </p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+    <colgroup>
+        <col align='left' />
+        <col align='right' />
+        <col align='right' />
+        <col align='right' />
+    </colgroup>
+    <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+        <th colspan="1">CDR</th>
+        <th>w.t</th>
+        <th>Scheme</th>
+        <th>Mutations</th>
+        <th>Frequency</th>
+    </tr>
+    <tr class='failClass warning'>
+        <td></td>
+        <td>3.8.8</td>
+        <td>100</td>
+        <td>90</td>
+        <td><span style="color: green; ">PASS</span></td>
+    </tr>
+
+</table>
+    <p ><strong>3. 组合突变分析</strong></p>
+    <p>为确保建库序列按照优化方案进行突变，对正确序列CDR区进行突变位点分析（<span style="color: red">突变数量不符合要求的标红</span>）
+    </p>
+    <p class="bk">库名称： {{ result.name }}</p>
+    <p>{{ result.rseq }}条正确序列组合突变结果:</p>
+    <table id='result_table' class="table table-condensed table-bordered table-hover" >
+        <colgroup>
+            <col align='left' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+        </colgroup>
+        <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+            <th width="25%">ID</th>
+            <th width="25%">Mutations</th>
+        </tr>
+        {% for i in ID2 %}
+            <tr>
+                <td >{{ ID2 }}</td>
+                <td>{{frame2}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
