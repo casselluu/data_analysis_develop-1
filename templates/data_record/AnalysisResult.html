@@ -61,19 +61,31 @@
         <col align='right' />
     </colgroup>
     <tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
-        <th colspan="1">CDR</th>
+        <th>CDR</th>
         <th>w.t</th>
         <th>Scheme</th>
         <th>Mutations</th>
         <th>Frequency</th>
     </tr>
-    <tr class='failClass warning'>
-        <td></td>
-        <td>3.8.8</td>
-        <td>100</td>
-        <td>90</td>
-        <td><span style="color: green; ">PASS</span></td>
-    </tr>
+    {% for a,b,c,d,e in list2 %}
+        {% if c == d%}
+        <tr style="color: red">
+            <td >{{ a }}</td>
+            <td >{{ b }}</td>
+            <td >{{ c }}</td>
+            <td >{{ d }}</td>
+            <td >{{ e }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td >{{ a }}</td>
+            <td >{{ b }}</td>
+            <td >{{ c }}</td>
+            <td >{{ d }}</td>
+            <td >{{ e }}</td>
+        </tr>
+        {% endif %}
+    {% endfor %}
 
 </table>
     <p ><strong>3. 组合突变分析</strong></p>
@@ -92,11 +104,18 @@
             <th width="25%">ID</th>
             <th width="25%">Mutations</th>
         </tr>
-        {% for i in ID2 %}
+        {% for i,j,h in list3 %}
+            {% if h == 1 %}
+                <tr style="color: red">
+                    <td >{{i}}</td>
+                    <td>{{j}}</td>
+                </tr>
+            {% else %}
             <tr>
-                <td >{{ ID2 }}</td>
-                <td>{{frame2}}</td>
+                <td >{{i}}</td>
+                <td>{{j}}</td>
             </tr>
+            {% endif %}
         {% endfor %}
     </table>
 
