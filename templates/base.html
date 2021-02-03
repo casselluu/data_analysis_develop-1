@@ -1,51 +1,276 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	{% block title%}
-	<title>首页</title>
-	{% endblock%}
-	<style type="text/css">
-	
-	 	div{margin-left:10%;width:75%;height:auto;background:silver;}
-		a{width:50px;}
-		.welcome{margin-left:35%;font-size:40px;}
-                table{
-        	border: 2px solid black;
-        	color:black;
-        	margin:1em 2em;
-        	border-collapse:collapse;
-       		border-spacing:3px 5px;
-        	padding:1em;
-        	table-layout:fixed;
-        	width:1600px;
-        	text-align:center;
-        	}
-        	.CDR {width:800px}
-        	.cdr1 {color:green}
-        	.cdr2 {color:blue}
-        	.cdr3 {color:grey}
-        	.cdr4 {color:pink}
-        	.cdr5 {color:silver}
-        	.cdr6 {color:red}              
+    <meta charset="utf-8">
+    {% block title%}
+        <title>舒泰神数据分析系统</title>
+    {% endblock%}
 
-	</style>
-	
+	<!-- Stylesheets -->
+	{% load static %}
+    <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <!-- Responsive File -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!-- Color File -->
+    <link href="{% static 'css/color.css'%}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'images/logo-2.png'%}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/logo-2.png'%}" type="image/x-icon">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </head>
+
 <body>
-<div style="font-size:30px;line-height:100px;">
-	<a href="/admin">后台管理</a>&nbsp&nbsp&nbsp&nbsp
-	<a href="{% url 'data_record:cdrinfo' 1 "lengthCdr3" %}">CDR显示</a>&nbsp&nbsp&nbsp&nbsp
-        {% if del_his %}
-		<a href="{% url 'data_record:delhistory'%}">删除结果</a>&nbsp&nbsp&nbsp&nbsp
-	{% endif %}
-	<a href="{% url 'data_record:upload' %}">序列分析</a>&nbsp&nbsp&nbsp&nbsp
-	<a href="{% url 'data_record:download'%}">结果下载</a>&nbsp&nbsp&nbsp&nbsp
-	<a href="{% url 'data_record:chagepasswd'%}">修改密码</a>&nbsp&nbsp&nbsp&nbsp
-	<a href="{% url 'data_record:logout'%}">退出登陆</a>
+
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="loader-wrap">
+        <div class="preloader"><div class="preloader-close">Preloader Close</div></div>
+        <div class="layer layer-one"><span class="overlay"></span></div>
+        <div class="layer layer-two"><span class="overlay"></span></div>
+        <div class="layer layer-three"><span class="overlay"></span></div>
+    </div>
+
+    <!-- Main Header -->
+<header class="main-header">
+
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="left-column">
+                    <div class="location"><i class="flaticon-placeholder"></i>北京</div>
+                </div>
+                <div class="right-column">
+                    <div class="search-btn"><button type="button" class="theme-btn search-toggler"><span class="flaticon-search-1
+                            "></span></button></div>
+                    <ul class="contact-info">
+                        <li><i class="flaticon-call"></i>010－67519888、67519898</li>
+                        <li><a href="mailto:securities@staidson.com"><i class="flaticon-email-1"></i>securities@staidson.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Upper -->
+    <div class="header-upper">
+        <div class="auto-container">
+            <div class="inner-container">
+                <!--Logo-->
+                <div class="logo-box">
+                    <div class="logo"><a href=""><img src="{% static 'images/logo.png'%}" alt=""></a></div>
+                </div>
+                <!--Nav Box-->
+                <div class="nav-outer">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler"><img src="{% static 'images/icons/icon-bar.png'%}" alt=""></div>
+
+                    <!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation">
+                                <li class="dropdown"><a href="">首页</a>
+                                </li>
+                                <li><a href="/admin">后台管理</a></li>
+                                <li class="dropdown"><a href="{% url 'data_record:upload' %}">分析</a>
+                                    <ul>
+                                        <li><a href="{% url 'data_record:cdrinfo' 1 "lengthCdr3" %}">CDR显示</a></li>
+                                        <li><a href="{% url 'data_record:upload' %}">序列分析</a></li>
+                                        <li class="active"><a href="termites-control.html">Termites Control</a></li>
+                                        <li><a href="spiders-control.html">Spiders Control</a></li>
+                                        <li><a href="rodents-control.html">Rodents Control</a></li>
+                                        <li><a href="fly-control.html">Fly Control</a></li>
+                                        <li><a href="bee-control.html">Bee Control</a></li>
+                                        <li><a href="bed-bug-control.html">Bed Bug Control</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="projects.html">文件管理</a>
+                                    <ul>
+                                        <li><a href="{% url 'data_record:download'%}">结果下载 </a></li>
+                                        <li><a href="{% url 'data_record:delhistory'%}">删除结果</a></li>
+                                        <li><a href="team.html">Team</a></li>
+                                        <li><a href="faq.html">FAQ</a></li>
+                                        <li><a href="404.html">404 Page</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="/data_record/chagepasswd/">修改密码</a>
+                                    <ul>
+                                        <li><a href="blog.html">Blog Grid</a></li>
+                                        <li><a href="blog-2.html">Blog Classic</a></li>
+                                        <li><a href="blog-3.html">Blog List</a></li>
+                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'data_record:logout'%}">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="link-btn"><a href="{% url 'data_record:logout'%}" class="theme-btn btn-style-one"><span>切换用户</span></a></div>
+            </div>
+        </div>
+    </div>
+    <!--End Header Upper-->
+
+    <!-- Sticky Header  -->
+    <div class="sticky-header">
+        <div class="header-upper">
+            <div class="auto-container">
+                <div class="inner-container">
+                    <!--Logo-->
+                    <div class="logo-box">
+                        <div class="logo"><a href="index.html"><img src="{% static 'images/logo.png'%}" alt=""></a></div>
+                    </div>
+                    <!--Nav Box-->
+                    <div class="nav-outer">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler"><img src="{% static 'images/icons/icon-bar-2.png'%}" alt=""></div>
+
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                        </nav>
+                    </div>
+                    <div class="link-btn"><a href="{% url 'data_record:logout'%}" class="theme-btn btn-style-one"><span>切换用户</span></a></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Sticky Menu -->
+
+    <!-- Mobile Menu  -->
+    <div class="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <div class="close-btn"><span class="icon flaticon-remove"></span></div>
+
+        <nav class="menu-box">
+            <div class="nav-logo"><a href="index.html"><img src="{% static 'images/logo-2.png'%}" alt="" title=""></a></div>
+            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
+            <!--Social Links-->
+            <div class="social-links">
+                <ul class="clearfix">
+                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                    <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                    <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                    <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                    <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+	<!-- End Mobile Menu -->
+
+    <div class="nav-overlay">
+        <div class="cursor"></div>
+        <div class="cursor-follower"></div>
+    </div>
+</header>
+	<!-- End Main Header -->
+
+
+	<!--Search Popup-->
+	<div id="search-popup" class="search-popup">
+		<div class="close-search theme-btn"><span class="flaticon-remove"></span></div>
+		<div class="popup-inner">
+			<div class="overlay-layer"></div>
+			<div class="search-form">
+				<form method="post" action="index.html">
+					<div class="form-group">
+						<fieldset>
+							<input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required >
+							<input type="submit" value="Search Now!" class="theme-btn">
+						</fieldset>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	{% block body %}
+		<p class="welcome">欢迎使用舒泰神数据分析系统!</p>
+	{% endblock %}
+
+	<!--Main Footer-->
+	<footer class="main-footer">
+		<div class="upper-box">
+			<div class="auto-container">
+				<div class="row">
+					<div class="col-lg-4 col-md-7">
+						<div class="widget about-widget">
+							<h4 class="widget_title">About Pestico.</h4>
+							<div class="text">Nostrud exertation ullamco labor nisi aliquip <br> ex ea commodo consequat duis aute irure <br> dolor in reprehenderit in voluptate velit esse <br> cillum dolore.</div>
+							<div class="copyright"><a href="#">Pestico</a> © 2020 All Right Reserved</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6">
+						<div class="widget links-widget">
+							<h4 class="widget_title">Usefull Link</h4>
+							<div class="widget-content">
+								<ul class="list">
+									<li><a href="#">About Company </a></li>
+									<li><a href="#">Services</a></li>
+									<li><a href="#">How It Works</a></li>
+									<li><a href="#">Our Blog </a></li>
+									<li><a href="#">Contact Us</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6">
+						<div class="widget links-widget">
+							<h4 class="widget_title">Links</h4>
+							<div class="widget-content">
+								<ul class="list">
+									<li><a href="#">House Sanitizing </a></li>
+									<li><a href="#">Window Sanitizing </a></li>
+									<li><a href="#">Domestic Sanitizing</a></li>
+									<li><a href="#">Disinfection </a></li>
+									<li><a href="#">Office Sa nitizing </a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 offset-lg-1 col-md-6">
+						<div class="widget contact-widget">
+							<h4 class="widget_title">Contact</h4>
+							<ul>
+								<li>3491 Pall Mall Drive, Suite #203 Jacksonville, FL 42368</li>
+								<li><a href="mailto:info@pestico.com">info@pestico.com</a></li>
+								<li><a href="tel:+2(305)5873407">+2(305) 587-3407</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--End Main Footer-->
 </div>
-{% block body %}
-<p class="welcome">欢迎使用舒泰神数据分析系统!</p>
-{% endblock %}
+<!--End pagewrapper-->
+
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-right-arrow-4"></span></div>
+
+{% load static %}
+<script src="{% static '/js/jquery.js'%}"></script>
+<script src="{% static '/js/popper.min.js'%}"></script>
+<script src="{% static '/js/bootstrap.min.js'%}"></script>
+<script src="{% static '/js/bootstrap-select.min.js'%}"></script>
+<script src="{% static '/js/jquery.fancybox.js'%}"></script>
+<script src="{% static '/js/isotope.js'%}"></script>
+<script src="{% static '/js/owl.js'%}"></script>
+<script src="{% static '/js/appear.js'%}"></script>
+<script src="{% static '/js/wow.js'%}"></script>
+<script src="{% static '/js/lazyload.js'%}"></script>
+<script src="{% static '/js/scrollbar.js'%}"></script>
+<script src="{% static '/js/TweenMax.min.js'%}"></script>
+<script src="{% static '/js/swiper.min.js'%}"></script>
+<script src="{% static '/js/jquery.polyglot.language.switcher.js'%}"></script>
+<script src="{% static '/js/jquery.ajaxchimp.min.js'%}"></script>
+<script src="{% static '/js/parallax-scroll.js'%}"></script>
+<script src="{% static '/js/script.js'%}"></script>
+
+
 </body>
 </html>

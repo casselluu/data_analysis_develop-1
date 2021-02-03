@@ -227,7 +227,7 @@ def Creat_analysis_result(path):
 @login_required
 # 读取分析结果
 def AnalysisResult(request):
-    info_dict, table1, table2, table3 = Creat_analysis_result('C:/Users/Casselluu/Desktop/code/python_project/data_analysis_develop-1/result/')
+    info_dict, table1, table2, table3 = Creat_analysis_result('C:/Users/Casselluu/Desktop/code/Python/data_analysis_develop-1/result/')
     page = "data_record/AnalysisResult.html"
     username = request.user.username
     return render(request, page, {'result': info_dict, 'list1': table1, 'list2': table2,'list3': table3})

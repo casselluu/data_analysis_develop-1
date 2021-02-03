@@ -10,8 +10,7 @@
 		{% csrf_token %}
 		
 		{{rangeForm.as_p}}
-		
-		<input type="submit" value="提交">
+		<button type="submit" class="btn btn-primary" value="提交">提交</button>
 	</form>
         <ul>当前按照{{order_type}}排序</ul>
 	<table border=1>

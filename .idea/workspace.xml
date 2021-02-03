@@ -3,9 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="59ce4143-f713-4d47-b686-f7dbc50228f5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_analysis/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_analysis/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_analysis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_analysis/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_record/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_record/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_record/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_record/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/data_record/AnalysisResult.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/data_record/AnalysisResult.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CDR_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CDR_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/data_record/chagepasswd.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/data_record/chagepasswd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/data_record/download_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/data_record/download_data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +37,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
       <set>
+        <option value="https://github.com/casselluu/data_analysis_develop-1" />
         <option value="https://github.com/casselluu/data_analysis_develop-1.git" />
       </set>
     </option>
@@ -54,24 +62,31 @@
   <component name="ProjectId" id="1ns3wiq5EFRPaEpdLCWopyyU5xz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="pyconsole" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Casselluu\Desktop\code\python_project\data_analysis_develop-1\templates" />
       <recent name="C:\Users\Casselluu\Desktop\code\python_project\data_analysis_develop-1\templates\data_record" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Casselluu\Desktop\code\python_project\data_analysis_develop-1\templates" />
+      <recent name="C:\Users\Casselluu\Desktop\code\python_project\data_analysis_develop-1\templates\backup" />
+    </key>
   </component>
-  <component name="RunManager" selected="Django server.data_analysis_develop">
+  <component name="RunManager" selected="Django Server.data_analysis_develop">
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="data_analysis_develop" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,8 +139,9 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\Casselluu\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -141,7 +157,12 @@
       <workItem from="1612225973248" duration="11960000" />
       <workItem from="1612238456384" duration="4638000" />
       <workItem from="1612243148440" duration="9433000" />
-      <workItem from="1612252679719" duration="694000" />
+      <workItem from="1612252679719" duration="3029000" />
+      <workItem from="1612255787298" duration="46000" />
+      <workItem from="1612256822185" duration="1341000" />
+      <workItem from="1612312576404" duration="2347000" />
+      <workItem from="1612332095565" duration="916000" />
+      <workItem from="1612333553412" duration="9324000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore">
       <created>1612165463773</created>
@@ -178,11 +199,29 @@
       <option name="project" value="LOCAL" />
       <updated>1612243042820</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="test git">
+      <created>1612253421772</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612253421772</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
@@ -190,111 +229,7 @@
     <MESSAGE value="test git" />
     <option name="LAST_COMMIT_MESSAGE" value="test git" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="0" y="182" key="#Inspections" timestamp="1612236492172">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="0" y="182" key="#Inspections/0.0.1536.864@0.0.1536.864" timestamp="1612236492172" />
-    <state x="214" y="81" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612225984275">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="214" y="81" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1612225984275" />
-    <state x="512" y="229" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1612165593810">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="512" y="229" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1612165593810" />
-    <state x="311" y="19" key="CommitChangelistDialog2" timestamp="1612243041743">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="311" y="19" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1612243041743" />
-    <state x="137" y="62" key="DiffContextDialog" timestamp="1612173252749">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="137" y="62" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1612173252749" />
-    <state width="1412" height="256" key="GridCell.Tab.0.bottom" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state width="1412" height="256" key="GridCell.Tab.0.center" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state width="1412" height="256" key="GridCell.Tab.0.left" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state width="1412" height="256" key="GridCell.Tab.0.right" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state width="1412" height="256" key="GridCell.Tab.1.bottom" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state width="1412" height="256" key="GridCell.Tab.1.center" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state width="1412" height="256" key="GridCell.Tab.1.left" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state width="1412" height="256" key="GridCell.Tab.1.right" timestamp="1612252666832">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1412" height="256" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1612252666832" />
-    <state x="261" y="68" key="SettingsEditor" timestamp="1612165434014">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="261" y="68" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1612165434014" />
-    <state x="352" y="159" key="Vcs.Push.Dialog.v2" timestamp="1612171387408">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="352" y="159" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1612171387408" />
-    <state x="387" y="274" key="com.intellij.ide.util.TipDialog" timestamp="1612252679262">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="387" y="274" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1612252679262" />
-    <state x="564" y="369" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1612172996971">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="564" y="369" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1612172996971" />
-    <state x="423" y="217" key="git4idea.merge.GitPullDialog" timestamp="1612165660160">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="423" y="217" key="git4idea.merge.GitPullDialog/0.0.1536.864@0.0.1536.864" timestamp="1612165660160" />
-    <state x="674" y="187" width="672" height="678" key="search.everywhere.popup" timestamp="1612240042358">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="674" y="187" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1612240042358" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>35</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/data_analysis_develop_1$test.coverage" NAME="test Coverage Results" MODIFIED="1612251755398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_analysis_develop_1$test.coverage" NAME="test Coverage Results" MODIFIED="1612342528807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

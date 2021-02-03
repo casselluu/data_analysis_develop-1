@@ -22,7 +22,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path("", include("logInOut.urls")),
+    path('', include("logInOut.urls")),
     path('admin/', custom_site.urls),
     path('data_record/', include(("data_record.urls", "data_record"), namespace="data_record")),
     path('contact/', include("contact.urls")),

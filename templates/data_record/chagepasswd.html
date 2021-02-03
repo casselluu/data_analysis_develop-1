@@ -6,9 +6,24 @@
 {% block body %}
     <form action="/data_record/chagepasswd/" method="post">
         {% csrf_token %}
-        用户名:{{username}}<br>
-        原密码:<input type="password" name="origin_passwd">{{error_info}}<br>
-        新密码:<input type="password" name="new_passwd"><br>
-	<input type="submit" value="提交"><br>
+	    用户名:{{username}}
+	    <div class="input-group mb-2">
+		    <div class="input-group-prepend">
+			    <span class="input-group-text">原密码</span>
+		    </div>
+		    <input type="password" class="form-control"  name ="origin_passwd">{{error_info}}
+	    </div>
+	    <div class="input-group mb-2">
+		    <div class="input-group-prepend">
+			    <span class="input-group-text">新密码</span>
+		    </div>
+		    <input type="password" class="form-control"  name ="new_passwd">
+	    </div>
+	    <button type="submit" class="btn btn-primary" value="提交">确认修改</button>
+    <div>
+	    <form class="form">
+		    <p></p>
+	    </form>
+    </div>
     </form>
 {% endblock %}
