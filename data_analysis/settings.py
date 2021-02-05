@@ -124,10 +124,3 @@ STATIC_URL = '/static/'
 # 设置静态文件的保存目录
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static1").replace('\\','/')
-STATICFILES_DIRS = (
-    ('css', os.path.join(STATIC_ROOT, 'css').replace('\\', '/')),
-    ('images', os.path.join(STATIC_ROOT, 'images').replace('\\', '/')),
-    ('fonts', os.path.join(STATIC_ROOT, 'fonts').replace('\\', '/')),
-    ('js', os.path.join(STATIC_ROOT, 'js').replace('\\', '/')),
-)

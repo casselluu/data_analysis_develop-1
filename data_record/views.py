@@ -12,7 +12,7 @@ import re
 import pandas as pd
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
-# from multi_tools.hmmer_parser import *
+# from multi_tools.hammer_parser import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # from django.contrib.auth.models import User
 from .models import MyUser
