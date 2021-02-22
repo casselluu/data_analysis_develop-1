@@ -6,51 +6,73 @@
 
 {%block body %}
 	<!--定义排序的类别，分别为按照CDR3长度排序，CDR排序，分析时间排序-->
-	<form action="{% url 'data_record:cdrinfo' 1 order_type %}" method="POST">
-		{% csrf_token %}
-		
-		{{rangeForm.as_p}}
-		<button type="submit" class="btn btn-primary" value="提交">提交</button>
+	<div class="container">
+		<form action="{% url 'data_record:cdrinfo' 1 order_type %}" method="POST">
+			{% csrf_token %}
+			<div class="form-group">
+				{{rangeForm.as_p}}
+			</div>
+			<input >
+			<button type="submit" class="btn btn-primary" value="提交">确认排序方式</button>
+		</form>
+	</div>
 	</form>
-        <ul>当前按照{{order_type}}排序</ul>
-	<table border=1>
-		<tr>
-			<th>序列名称</th>
-			<th class="CDR">序列信息</th>
-			<th>序列长度</th>
-			<th>CDR3长度</th>
-			<th>分析时间</th>
-		</tr>
-		{% for list in pageinfo.object_list %}
-		<tr>
-			<td>{{list.seqName}}</td>
-			<td>{% cdrsplit list.sequence %}</td>
-			<td>{{list.lengthAllCdr}}</td>
-			<td>{{list.lengthCdr3}}</td>
-			<td>{{list.history.pubDate}}</td>
-		</tr>
-		{% endfor %}
-	</table>
-
+	<div class="container">
+		<h2>CDR序列</h2>
+	{% if order_type == lengthAllCdr %}
+		<p>CDRL/H长度</p>
+	{% elif order_type == lengthCdr3 %}
+		<p>CDR3长度</p>
+	{% elif order_type == history %}
+		<p>分析日期</p>
+	{% else %}
+		<p>未指定排序方式</p>
+	{% endif %}
+		<p>当前按照{{order_type}}排序：</p>
+		<table class="table table-hover">
+			<thead>
+			<tr>
+				<th>序列名称</th>
+				<th class="CDR">序列信息</th>
+				<th>序列长度</th>
+				<th>CDR3长度</th>
+				<th>分析时间</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for list in pageinfo.object_list %}
+				<tr>
+					<td>{{list.seqName}}</td>
+					<td>{% cdrsplit list.sequence %}</td>
+					<td>{{list.lengthAllCdr}}</td>
+					<td>{{list.lengthCdr3}}</td>
+					<td>{{list.history.pubDate}}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+</div>
 <!--下面定义显示下一页的链接的模块-->
 
-<div>
-	{% if pageinfo.has_previous %}
-	    <a href="{% url 'data_record:cdrinfo' pageinfo.previous_page_number order_type %}">上一页</a>
-	{% endif %}
-	{% if pageinfo.object_list %}
-		{% for page in pageinfo.paginator.page_range %}
-			{% if pageinfo.number == page %}
-				<a href="javascript:;">{{page}}</a>
-			{% else %}
-				<a href="{% url 'data_record:cdrinfo' page  order_type%}">{{page}}</a>
-			{% endif%}
-		{% endfor %}
-	{% endif %}
+<div class="container">
+	<ul class="pagination">
+		{% if pageinfo.has_previous %}
+		<li class="page-item">
+			<a class="page-link" href="{% url 'data_record:cdrinfo' pageinfo.previous_page_number order_type %}">上一页</a></li>
+		{% endif %}
+		{% if pageinfo.object_list %}
+			{% for page in pageinfo.paginator.page_range %}
+				{% if pageinfo.number == page %}
+					<li class="page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>
+				{% else %}
+					<li class="page-item"><a href="{% url 'data_record:cdrinfo' page  order_type%}">{{page}}</a></li>
+				{% endif%}
+			{% endfor %}
+		{% endif %}
 	{% if pageinfo.has_next %}
-	 <a href="{% url 'data_record:cdrinfo' pageinfo.next_page_number order_type%}">下一页</a>
+		<li class="page-item"><a class="page-link" href="{% url 'data_record:cdrinfo' pageinfo.next_page_number order_type%}">下一页</a></li>
 	{% endif %}
+	</ul>
 </div>
-
 {%endblock%}
 

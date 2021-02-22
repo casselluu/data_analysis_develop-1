@@ -25,4 +25,4 @@ class RangeForm(forms.Form):
     # 制作一个选择项目的下滑菜单
     choices = [("lengthAllCdr", "CDRL/H长度"),
                ("lengthCdr3", "CDR3长度"), ("history", "分析日期")]
-    rangeInfo = forms.ChoiceField(choices=choices, label="排序类别")
+    rangeInfo = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control'}), choices=choices, label="排序类别")

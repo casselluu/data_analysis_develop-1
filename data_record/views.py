@@ -140,6 +140,8 @@ def contact(request):
     return render(request, "data_record/contact_form.html", {"form": form})
 
 
+def Todo(request):
+    return render(request, "data_record/Todo.html", )
 # 定义一个下载数据的view
 
 

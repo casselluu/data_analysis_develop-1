@@ -26,4 +26,5 @@ urlpatterns = [
     path('<int:History_id>/', views.detail, name="detail"),
     path('<int:History_id>/result/', views.result, name="result"),
     path('<int:History_id>/vote/', views.vote, name="vote"),
+    path('Todo/', views.Todo, name="Todo"),
 ]

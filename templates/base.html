@@ -9,6 +9,7 @@
 	<!-- Stylesheets -->
 {% load static %}
     <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
     <link href="{% static 'css/style.css'%}" rel="stylesheet">
     <!-- Responsive File -->
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
@@ -79,29 +80,29 @@
                                     <ul>
                                         <li><a href="{% url 'data_record:cdrinfo' 1 "lengthCdr3" %}">CDR显示</a></li>
                                         <li><a href="{% url 'data_record:upload' %}">序列分析</a></li>
-                                        <li class="active"><a href="termites-control.html">Termites Control</a></li>
-                                        <li><a href="spiders-control.html">Spiders Control</a></li>
-                                        <li><a href="rodents-control.html">Rodents Control</a></li>
-                                        <li><a href="fly-control.html">Fly Control</a></li>
-                                        <li><a href="bee-control.html">Bee Control</a></li>
-                                        <li><a href="bed-bug-control.html">Bed Bug Control</a></li>
+                                        <li class="active"><a href="{% url 'data_record:Todo' %}">后续实现1</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现2</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现3</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现4</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现5</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现6</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="projects.html">文件管理</a>
+                                <li class="dropdown"><a href="projects.html">内容管理</a>
                                     <ul>
                                         <li><a href="{% url 'data_record:download'%}">结果下载 </a></li>
                                         <li><a href="{% url 'data_record:delhistory'%}">删除结果</a></li>
-                                        <li><a href="team.html">Team</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现7</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现8</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现9</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="/data_record/chagepasswd/">修改密码</a>
                                     <ul>
-                                        <li><a href="blog.html">Blog Grid</a></li>
-                                        <li><a href="blog-2.html">Blog Classic</a></li>
-                                        <li><a href="blog-3.html">Blog List</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现10</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现11</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现12</a></li>
+                                        <li><a href="{% url 'data_record:Todo' %}">后续实现13</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'data_record:logout'%}">退出登录</a></li>
@@ -179,7 +180,7 @@
 					<div class="form-group">
 						<fieldset>
 							<input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required >
-							<input type="submit" value="Search Now!" class="theme-btn">
+							<input type="submit" value="搜索功能尚未完成" class="theme-btn">
 						</fieldset>
 					</div>
 				</form>
@@ -188,7 +189,19 @@
 	</div>
 
 	{% block body %}
-		<p class="welcome">欢迎使用舒泰神数据分析系统!</p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<h2 class="welcome" style="text-align: center" >欢迎使用舒泰神数据分析系统!</h2>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 	{% endblock %}
 
 	<!--Main Footer-->
@@ -198,21 +211,24 @@
 				<div class="row">
 					<div class="col-lg-4 col-md-7">
 						<div class="widget about-widget">
-							<h4 class="wi">About Pestico.</h4>
-							<div class="text">Nostrud exertation ullamco labor nisi aliquip <br> ex ea commodo consequat duis aute irure <br> dolor in reprehenderit in voluptate velit esse <br> cillum dolore.</div>
-							<div class="copyright"><a href="#">Pestico</a> © 2020 All Right Reserved</div>
+							<h4 class="widget_title">关于舒泰神</h4>
+							<div class="text"> 舒泰神成立于2002年,以自主知识产权创新药物的研发、生产和营销为主要业务,<br>
+								涵盖早期探索性研究、药物发现、工艺开发及中试放大、临床前生物学评价、临床开发到药品生产和商业化的全产业链创新型生物制药企业<br>
+							</div>
+							<div class="copyright"><a href="#">Staidson</a> © 2020 All Right Reserved</div>
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-6">
 						<div class="widget links-widget">
-							<h4 class="widget_title">Usefull Link</h4>
+							<h4 class="widget_title" style="color: whitesmoke">其他工具网站</h4>
 							<div class="widget-content">
 								<ul class="list">
-									<li><a href="#">About Company </a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">How It Works</a></li>
-									<li><a href="#">Our Blog </a></li>
-									<li><a href="#">Contact Us</a></li>
+									<li></li>
+									<li><a href="#">工具网站1</a></li>
+									<li><a href="#">工具网站2</a></li>
+									<li><a href="#">工具网站3</a></li>
+									<li><a href="#">工具网站4</a></li>
+									<li><a href="#">工具网站5</a></li>
 								</ul>
 							</div>
 						</div>
@@ -222,22 +238,22 @@
 							<h4 class="widget_title">Links</h4>
 							<div class="widget-content">
 								<ul class="list">
-									<li><a href="#">House Sanitizing </a></li>
-									<li><a href="#">Window Sanitizing </a></li>
-									<li><a href="#">Domestic Sanitizing</a></li>
-									<li><a href="#">Disinfection </a></li>
-									<li><a href="#">Office Sa nitizing </a></li>
+									<li><a href="#">插入链接1</a></li>
+									<li><a href="#">插入链接2</a></li>
+									<li><a href="#">插入链接3</a></li>
+									<li><a href="#">插入链接4</a></li>
+									<li><a href="#">插入链接5</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-3 offset-lg-1 col-md-6">
 						<div class="widget contact-widget">
-							<h4 class="widget_title">Contact</h4>
+							<h4 class="widget_title">联系方式</h4>
 							<ul>
-								<li>3491 Pall Mall Drive, Suite #203 Jacksonville, FL 42368</li>
-								<li><a href="mailto:info@pestico.com">info@pestico.com</a></li>
-								<li><a href="tel:+2(305)5873407">+2(305) 587-3407</a></li>
+								<li>地址：北京经济技术开发区经海二路36号</li>
+								<li><a href="mailto:securities@staidson.com">securities@staidson.com</a></li>
+								<li><a href="tel:010-67519794">010-67519794</a></li>
 							</ul>
 						</div>
 					</div>
