@@ -65,7 +65,7 @@
 				{% if pageinfo.number == page %}
 					<li class="page-item"><a class="page-link" href="javascript:;">{{page}}</a></li>
 				{% else %}
-					<li class="page-item"><a href="{% url 'data_record:cdrinfo' page  order_type%}">{{page}}</a></li>
+					<li class="page-item"><a class="page-link" href="{% url 'data_record:cdrinfo' page  order_type%}">{{page}}</a></li>
 				{% endif%}
 			{% endfor %}
 		{% endif %}
