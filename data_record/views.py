@@ -187,8 +187,16 @@ def download_data(request):
 
 # 读取分析结果
 def Creat_analysis_result(path):
-    info_dict = {'name': '文件名字', 'time': '文件提交时间', 'seqn': '接受序列数量', 'rseq': 3, 'wseq': '错误序列数',
-                 'rate': '正确率', 'dmn': '设计突变位点数', 'mn': '正确突变位点数', 'umn': '未突变位点数'}
+    info_dict = {
+        'name': '文件名字',
+        'time': '文件提交时间',
+        'seqn': '接受序列数量',
+        'rseq': 3,
+        'wseq': '错误序列数',
+        'rate': '正确率',
+        'dmn': '设计突变位点数',
+        'mn': '正确突变位点数',
+        'umn': '未突变位点数'}
     list1 = []
     list2 = []
     list3 = []
@@ -200,19 +208,36 @@ def Creat_analysis_result(path):
     mtime = os.stat(os.path.join(root, files[0])).st_mtime
     info_dict['name'] = files[0].split('_')[0] + '_' + files[0].split('_')[1]
     info_dict['time'] = time.strftime('%Y-%m-%d', time.localtime(mtime))
-    data1 = pd.read_csv(path + files[0], sep='\t', header=None, names=['id', 'num'])
+    data1 = pd.read_csv(
+        path + files[0],
+        sep='\t',
+        header=None,
+        names=[
+            'id',
+            'num'])
     info_dict['seqn'] = data1.num[:-1].sum(axis=0)
     info_dict['wseq'] = data1.num.iloc[-2]
     info_dict['rseq'] = data1.num[:-2].sum(axis=0)
-    info_dict['rate'] = info_dict['rseq']/info_dict['seqn']
+    info_dict['rate'] = info_dict['rseq'] / info_dict['seqn']
     for i in range(len(data1) - 1):
         list1.append((data1.id[i], data1.num[i]))
-    data2 = pd.read_csv(path + files[1], sep='\t').append(pd.read_csv(path + files[2], sep='\t'), ignore_index=True)
+    data2 = pd.read_csv(
+        path + files[1],
+        sep='\t').append(
+        pd.read_csv(
+            path + files[2],
+            sep='\t'),
+        ignore_index=True)
     data2.columns = ['CDR', 'position', 'wt', 'Mutations', 'Frequency']
     info_dict['dmn'] = len(data2)
     umn = 0
     for i in range(info_dict['dmn'] - 1):
-        list2.append((data2.CDR[i], 'NNK', data2.wt[i], data2.Mutations[i], data2.Frequency[i]))
+        list2.append(
+            (data2.CDR[i],
+             'NNK',
+             data2.wt[i],
+             data2.Mutations[i],
+             data2.Frequency[i]))
         if data2.wt[i] == data2.Mutations[i]:
             umn += 1
     info_dict['umn'] = umn
@@ -229,10 +254,16 @@ def Creat_analysis_result(path):
 @login_required
 # 读取分析结果
 def AnalysisResult(request):
-    info_dict, table1, table2, table3 = Creat_analysis_result('C:/Users/Casselluu/Desktop/code/Python/data_analysis_develop-1/result/')
+    info_dict, table1, table2, table3 = Creat_analysis_result(
+        'C:/Users/Casselluu/Desktop/code/Python/data_analysis_develop-1/result/')
     page = "data_record/AnalysisResult.html"
     username = request.user.username
-    return render(request, page, {'result': info_dict, 'list1': table1, 'list2': table2,'list3': table3})
+    return render(request,
+                  page,
+                  {'result': info_dict,
+                   'list1': table1,
+                   'list2': table2,
+                   'list3': table3})
 
 
 def time_add(request, num_n):
@@ -636,6 +667,7 @@ def search_form(request):
                            "warnings": "can not find or input in empty please check"})
     return render(request, "data_record/search_form.html",
                   {"Search": "This is search", "warnings": "the origin"})
+
 
 
 def search(request):

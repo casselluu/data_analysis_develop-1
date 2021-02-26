@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59ce4143-f713-4d47-b686-f7dbc50228f5" name="Default Changelist" comment="Html">
+      <change afterPath="$PROJECT_DIR$/static/images/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mydefined/templatetags/mytags.py" beforeDir="false" afterPath="$PROJECT_DIR$/mydefined/templatetags/mytags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CDR_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CDR_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_record/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_record/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +65,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/static/css" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -175,7 +174,10 @@
       <workItem from="1614036867697" duration="98000" />
       <workItem from="1614127697598" duration="5271000" />
       <workItem from="1614137187275" duration="280000" />
-      <workItem from="1614157397843" duration="627000" />
+      <workItem from="1614157397843" duration="764000" />
+      <workItem from="1614213986886" duration="4133000" />
+      <workItem from="1614230098647" duration="2409000" />
+      <workItem from="1614306739551" duration="1470000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore">
       <created>1612165463773</created>
@@ -261,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614128702101</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Html">
+      <created>1614158137000</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1614158137000</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
